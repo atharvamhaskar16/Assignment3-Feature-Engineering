@@ -9,7 +9,9 @@ def create_feature_selector(k=8):
     """
 
     selector = SelectKBest(
-        score_func=mutual_info_classif,
+        score_func=lambda X, y: mutual_info_classif(
+            X, y, random_state=42
+        ),
         k=k
     )
 
